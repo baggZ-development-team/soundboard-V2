@@ -63,7 +63,7 @@
 
       data.files.forEach(file => {
         const btn = document.createElement("button");
-        btn.textContent = file;
+        btn.textContent = file.split(".")[0];
 
         const audio = new Audio(`audio/${file}`);
         btn.onclick = () => audio.play();
