@@ -54,23 +54,22 @@
     <div id="buttons"></div>
 
     <script>
-        const api = "https://api.github.com/repos/baggZ-development-team/soundboard-V2/contents/audio";
+         (async () => {
+      const res = await fetch("Audios.json");
+      const data = await res.json();
 
-        fetch(api)
-            .then(res => res.json())
-            .then(files => {
-            files
-                .filter(f => f.name.endsWith(".mp3"))
-                .forEach(f => {
-                const btn = document.createElement("button");
-                btn.textContent = f.name.split(".")[[0].replace(/[_-]/g, " ")];
+      const container = document.getElementById("buttons");
 
-                const audio = new Audio(f.download_url);
-                btn.onclick = () => audio.play();
+      data.files.forEach(file => {
+        const btn = document.createElement("button");
+        btn.textContent = file.split(".")[0].replace(/[_-]/g, " ");
 
-                document.getElementById("buttons").appendChild(btn);
-                });
-            });
+        const audio = new Audio(`audio/${file}`);
+        btn.onclick = () => audio.play();
+
+        container.appendChild(btn);
+      });
+    })();
     </script>
 </body>
 </html>
