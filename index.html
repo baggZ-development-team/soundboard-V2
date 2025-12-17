@@ -55,9 +55,9 @@
     <div id="buttons"></div>
 
     <script>
-        const api = "https://api.github.com/repos/baggZ-development-team/soundboard-V2/contents/audio";
+        const audios = "Audios.json";
 
-        fetch(api)
+        fetch(audios)
             .then(res => res.json())
             .then(files => {
             files
