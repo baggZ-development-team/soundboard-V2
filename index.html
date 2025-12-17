@@ -64,7 +64,7 @@
                 .filter(f => f.name.endsWith(".mp3"))
                 .forEach(f => {
                 const btn = document.createElement("button");
-                btn.textContent = f.name;
+                btn.textContent = f.name.split(".mp3")[0];
 
                 const audio = new Audio(f.download_url);
                 btn.onclick = () => audio.play();
