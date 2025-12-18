@@ -58,8 +58,7 @@
   };
 
   document.addEventListener("keydown", (e) => {
-  if (e.code === "Space") {
-    if (currentAudio) {
+  if (e.code === "Space" && currentAudio) {
       currentAudio.pause();
       currentAudio.currentTime = 0;
     }
