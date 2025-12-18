@@ -18,25 +18,46 @@
     <h1>baggZ Soundboard</h1>
     <h3 id="loading">If a sound isn't working wait a second.</h3>
 
+    <button id="stopBtn">Stop</button>
+
     <div id="buttons" display="none"></div>
 
     <script>
-         (async () => {
-      const res = await fetch("Audios.json");
-      const data = await res.json();
+        (async () => {
+  const res = await fetch("Audios.json");
+  const data = await res.json();
 
-      const container = document.getElementById("buttons");
+  const stopBtn = document.getElementById("stopBtn");
+  const container = document.getElementById("buttons");
 
-      data.files.forEach(file => {
-        const btn = document.createElement("button");
-        btn.textContent = file.split(".")[0].replace(/[_-]/g, " ");
+  let currentAudio = null;
 
-        const audio = new Audio(`audio/${file}`);
-        btn.onclick = () => audio.play();
+  data.files.forEach(file => {
+    const btn = document.createElement("button");
+    btn.textContent = file.split(".")[0].replace(/[_-]/g, " ");
 
-        container.appendChild(btn);
-      });
-    })();
+    const audio = new Audio(`audio/${file}`);
+    
+    btn.onclick = () => {
+      if (currentAudio && currentAudio !== audio) {
+        currentAudio.pause();
+        currentAudio.currentTime = 0;
+      }
+      currentAudio = audio;
+      audio.play();
+    };
+
+    container.appendChild(btn);
+  });
+
+  stopBtn.onclick = () => {
+    if (currentAudio) {
+      currentAudio.pause();
+      currentAudio.currentTime = 0;
+    }
+  };
+})();
+
     </script>
 </body>
 </html>
