@@ -16,47 +16,27 @@
 </head>
 <body>
     <h1>baggZ Soundboard</h1>
-    <h2 id="loading">Loading...</h2>
+    <h3 id="loading">If a sound isn't working wait a second.</h3>
 
     <div id="buttons" display="none"></div>
 
     <script>
-        (async () => {
-    const res = await fetch("Audios.json");
-    const data = await res.json();
+         (async () => {
+      const res = await fetch("Audios.json");
+      const data = await res.json();
 
-    const container = document.getElementById("buttons");
-    const soundFiles = data.files;
+      const container = document.getElementById("buttons");
 
-    let loadedCount = 0;
-    const sounds = {};
-
-    function checkAllLoaded() {
-        loadedCount++;
-        if (loadedCount === soundFiles.length) {
-            // All sounds are loaded
-            document.getElementById("loading").remove();
-            container.style.display = "block";
-        }
-    }
-
-    soundFiles.forEach(file => {
+      data.files.forEach(file => {
         const btn = document.createElement("button");
         btn.textContent = file.split(".")[0].replace(/[_-]/g, " ");
 
         const audio = new Audio(`audio/${file}`);
-        audio.preload = "auto";
-
-        // Wait until the sound can play through
-        audio.addEventListener("canplaythrough", checkAllLoaded, { once: true });
-        audio.addEventListener("error", checkAllLoaded, { once: true }); // fail-safe
-
         btn.onclick = () => audio.play();
-        container.appendChild(btn);
 
-        sounds[file] = audio;
-    });
-})();
+        container.appendChild(btn);
+      });
+    })();
     </script>
 </body>
 </html>
