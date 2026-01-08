@@ -159,7 +159,6 @@
             const stopBtn = document.getElementById("stopBtn");
             const container = document.getElementById("buttons");
             const searchBar = document.getElementById("searchBar");
-            const loading = document.getElementById("loading");
 
             let currentAudio = null;
             let allButtons = [];
@@ -185,9 +184,6 @@
                 container.appendChild(btn);
                 allButtons.push(btn);
             });
-
-            // Hide loading message after buttons are created
-            loading.style.display = "none";
 
             // Search functionality
             searchBar.addEventListener("input", (e) => {
