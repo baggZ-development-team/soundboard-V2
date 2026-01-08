@@ -22,16 +22,25 @@ body > * {
     z-index: 1;
 }
 
-button {
-    padding: 10px;
-    color: rgb(255, 255, 255);
-    background-color: rgba(255, 255, 255, 0.13);
-    border-radius: 5px;
-    margin: 2px;
-    border-width: 0px;
-    cursor: pointer;
+#buttons button {
+    padding: 12px 20px;
+    margin: 3px;
+    font-size: 16px;
+    border-radius: 25px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    background-color: rgba(255, 255, 255, 0.15);
+    color: white;
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
+    font-family: Roboto Mono, "monospace";
+    outline: none;
+    transition: all 0.3s;
+}
+
+#buttons button:hover {
+    border-color: rgba(255, 255, 255, 0.6);
+    background-color: rgba(255, 255, 255, 0.25);
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
 }
 
 h1, h3 {
@@ -70,9 +79,24 @@ h1, h3 {
 }
 
 #stopBtn {
-    margin-bottom: 10px;
-    font-size: larger;
-    background-color: rgba(255, 55, 55, 0.586);
+    padding: 12px 20px;
+    max-width: 500px;
+    font-size: 16px;
+    border-radius: 25px;
+    border: 2px solid rgba(255, 75, 75, 0.5);
+    background-color: rgba(255, 75, 75, 0.35);
+    color: rgb(255, 255, 255);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    font-family: Roboto Mono, "monospace";
+    outline: none;
+    transition: all 0.3s;
+}
+
+#stopBtn:hover {
+    border-color: rgba(255, 75, 75, 0.8);
+    background-color: rgba(255, 75, 75, 0.45);
+    box-shadow: 0 0 20px rgba(255, 75, 75, 0.5);
 }
 
 /* Scrollable buttons container */
